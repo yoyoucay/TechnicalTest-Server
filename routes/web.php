@@ -47,6 +47,23 @@ $router->get('routes',['as' => 'route.profile', function(){
 $router->get('route', function(){
     return redirect()->route('route.profile');
 });
+
+// Routes menggunakan Grouping
+$router->group(['prefix' => 'user'], function() use ($router){
+    $router->get('profile', function(){
+        return 'User profile';
+    });
+
+    $router->get('settings', function(){
+        return 'Settings profile';
+    });
+
+    $router->get('verify[/{key_verif}]', function($key_verif = null){
+        return 'Key verify User : '. $key_verif;
+    });
+});
+
+
 //-----------------------------------
 // Example Method Verb
 //-----------------------------------
