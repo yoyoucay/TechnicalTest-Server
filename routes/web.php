@@ -15,40 +15,46 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-// Generate Application key | GET method
+# Integrasi Route Dengan Controller
 $router->get('key', 'ExampleController@GenerateKey');
-
 $router->post('post', 'ExampleController@PostExample');
+$router->get('room/{id}', 'ExampleController@GetRoomID');
+$router->get('room/{id}/{category}', 'ExampleController@GetRoomCat');
+$router->get('foobar', 'ExampleController@fooBar');
+$router->post('foobars', 'ExampleController@fooBar');
+$router->post('user/profile','ExampleController@GetUser');
 
 $router->get('category/{class}', function($class){
     return 'Class Room : '.$class;
 });
 
-// Routes tanpa Optional Parameter
+// 
+
+# Routes tanpa Optional Parameter
 // $router->get('room/{category}/{room_number}', function($category, $room_number){
 //     return 'Category Room : '.$category.' Room Number : '.$room_number;
 // });
 
-// Routes Memakai Optional Parameter
-$router->get('room/{category}[/{room_number}]', function($category, $room_number = null){
-    if($room_number == null) {
-        return 'Category Room : '.$category;
-    }else{
-        return 'Category Room : '.$category.' | Room Number : '.$room_number;
-    }
-});
+# Routes Memakai Optional Parameter
+// $router->get('room/{category}[/{room_number}]', function($category, $room_number = null){
+//     if($room_number == null) {
+//         return 'Category Room : '.$category;
+//     }else{
+//         return 'Category Room : '.$category.' | Room Number : '.$room_number;
+//     }
+// });
 
-// Memberikan alias pada route
-$router->get('routes',['as' => 'route.profile', function(){
-    return route('route.profile');
-}]);
+# Memberikan alias pada route
+// $router->get('routes',['as' => 'route.profile', function(){
+//     return route('route.profile');
+// }]);
 
-// Routes menggunakan Redirect
-$router->get('route', function(){
-    return redirect()->route('route.profile');
-});
+# Routes menggunakan Redirect
+// $router->get('route', function(){
+//     return redirect()->route('route.profile');
+// });
 
-// Routes menggunakan Grouping
+# Routes menggunakan Grouping
 $router->group(['prefix' => 'user', 'middleware' => 'verify'], function() use ($router){
     $router->get('profile', function(){
         return 'User profile';
@@ -63,42 +69,42 @@ $router->group(['prefix' => 'user', 'middleware' => 'verify'], function() use ($
     });
 });
 
-// Routes untuk user jika akunnya belum melakukan verifikasi  
-$router->get('/verify', function ()  {
-    return 'Yeet! anda belum melakukan verifikasi';
-});
+# Routes untuk user jika akunnya belum melakukan verifikasi  
+// $router->get('/verify', function ()  {
+//     return 'Yeet! anda belum melakukan verifikasi';
+// });
  
 
 
-//-----------------------------------
-// Example Method Verb
-//-----------------------------------
-// Example GET method
+#-----------------------------------
+# Example Method Verb
+#-----------------------------------
+# Example GET method
 // $router->get('get', function ()  {
 //     return 'This GET Method';
 // });
 
-// Example POST method
+# Example POST method
 // $router->post('post', function ()  {
 //     return 'This POST Method';
 // });
 
-// // Example PUT method
+# Example PUT method
 // $router->post('put', function ()  {
 //     return 'This PUT Method';
 // });
 
-// // Example PATCH method
+# Example PATCH method
 // $router->post('patch', function ()  {
 //     return 'This PATCH Method';
 // });
 
-// // Example delete method
+# Example delete method
 // $router->post('delete', function ()  {
 //     return 'This delete Method';
 // });
 
-// // Example delete method
+# Example delete method
 // $router->post('options', function ()  {
 //     return 'This options Method';
 // });
