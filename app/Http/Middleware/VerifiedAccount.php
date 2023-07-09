@@ -15,7 +15,7 @@ class VerifiedAccount
      */
     public function handle($request, Closure $next)
     {
-        if ($request->IsVerify = false){
+        if ($request->verify != 1){
             return redirect('/verify');
         }
         return $next($request);

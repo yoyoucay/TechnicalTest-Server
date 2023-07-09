@@ -65,7 +65,7 @@ $app->singleton(
 
 $app->routeMiddleware([
     'auth' => App\Http\Middleware\Authenticate::class,
-    'verify' => App\Http\Middleware\VerifedAccount::class,
+    'verify' => App\Http\Middleware\VerifiedAccount::class,
 ]);
 
 /*

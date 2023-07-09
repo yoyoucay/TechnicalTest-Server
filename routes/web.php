@@ -49,7 +49,7 @@ $router->get('route', function(){
 });
 
 // Routes menggunakan Grouping
-$router->group(['prefix' => 'user', 'middleware' => 'verify', 'namespace' => ''], function() use ($router){
+$router->group(['prefix' => 'user', 'middleware' => 'verify'], function() use ($router){
     $router->get('profile', function(){
         return 'User profile';
     });
