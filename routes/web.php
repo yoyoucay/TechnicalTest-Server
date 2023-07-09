@@ -19,8 +19,8 @@ $router->get('/', function () use ($router) {
 $router->get('key', 'ExampleController@GenerateKey');
 
 # Routes for Authentication
-$router->post('register','AuthController@Register');
-$router->post('login','AuthController@Login');
+$router->post('/register','AuthController@Register');
+$router->post('/login','AuthController@Login');
 
 # Routes Practices
 // $router->post('post', 'ExampleController@PostExample');

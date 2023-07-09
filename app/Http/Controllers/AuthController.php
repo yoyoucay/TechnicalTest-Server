@@ -22,10 +22,11 @@ class AuthController extends Controller
         $password = Hash::make($request->input('password'));
 
         
-        $register ::create([
-            'name' => $name,
+        $register = User::create([
+            'fullname' => $fullname,
             'email' => $email,
-            'password' => $password
+            'password' => $password,
+            'verify' => 0,
         ]);
 
         if ($register) {
