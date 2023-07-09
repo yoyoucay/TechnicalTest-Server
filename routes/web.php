@@ -17,16 +17,22 @@ $router->get('/', function () use ($router) {
 
 # Integrasi Route Dengan Controller
 $router->get('key', 'ExampleController@GenerateKey');
-$router->post('post', 'ExampleController@PostExample');
-$router->get('room/{id}', 'ExampleController@GetRoomID');
-$router->get('room/{id}/{category}', 'ExampleController@GetRoomCat');
-$router->get('foobar', 'ExampleController@fooBar');
-$router->post('foobars', 'ExampleController@fooBar');
-$router->post('user/profile','ExampleController@GetUser');
 
-$router->get('category/{class}', function($class){
-    return 'Class Room : '.$class;
-});
+# Routes for Authentication
+$router->post('register','AuthController@Register');
+$router->post('login','AuthController@Login');
+
+# Routes Practices
+// $router->post('post', 'ExampleController@PostExample');
+// $router->get('room/{id}', 'ExampleController@GetRoomID');
+// $router->get('room/{id}/{category}', 'ExampleController@GetRoomCat');
+// $router->get('foobar', 'ExampleController@fooBar');
+// $router->post('foobars', 'ExampleController@fooBar');
+// $router->post('user/profile','ExampleController@GetUser');
+
+// $router->get('category/{class}', function($class){
+//     return 'Class Room : '.$class;
+// });
 
 // 
 
