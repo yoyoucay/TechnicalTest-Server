@@ -16,9 +16,9 @@ $router->get('/', function () use ($router) {
 });
 
 // Generate Application key | GET method
-$router->get('key', function ()  {
-    return str_random(32);
-});
+$router->get('key', 'ExampleController@GenerateKey');
+
+$router->post('post', 'ExampleController@PostExample');
 
 $router->get('category/{class}', function($class){
     return 'Class Room : '.$class;

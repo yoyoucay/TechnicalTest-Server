@@ -14,5 +14,13 @@ class ExampleController extends Controller
         //
     }
 
+    public function GenerateKey(){
+        return str_random(32);
+    }
+
+    public function PostExample(){
+        return 'Get data with POST Method';
+    }
+
     //
 }
