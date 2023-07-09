@@ -22,6 +22,9 @@ $router->get('key', 'ExampleController@GenerateKey');
 $router->post('/register','AuthController@Register');
 $router->post('/login','AuthController@Login');
 
+# Routes for User 
+$router->post('/user/{id}','UserController@Show');
+
 # Routes Practices
 // $router->post('post', 'ExampleController@PostExample');
 // $router->get('room/{id}', 'ExampleController@GetRoomID');
@@ -61,19 +64,19 @@ $router->post('/login','AuthController@Login');
 // });
 
 # Routes menggunakan Grouping
-$router->group(['prefix' => 'user', 'middleware' => 'verify'], function() use ($router){
-    $router->get('profile', function(){
-        return 'User profile';
-    });
+// $router->group(['prefix' => 'user', 'middleware' => 'verify'], function() use ($router){
+//     $router->get('profile', function(){
+//         return 'User profile';
+//     });
 
-    $router->get('settings', function(){
-        return 'Settings profile';
-    });
+//     $router->get('settings', function(){
+//         return 'Settings profile';
+//     });
 
-    $router->get('verify[/{key_verif}]', function($key_verif = null){
-        return 'Key verify User : '. $key_verif;
-    });
-});
+//     $router->get('verify[/{key_verif}]', function($key_verif = null){
+//         return 'Key verify User : '. $key_verif;
+//     });
+// });
 
 # Routes untuk user jika akunnya belum melakukan verifikasi  
 // $router->get('/verify', function ()  {
