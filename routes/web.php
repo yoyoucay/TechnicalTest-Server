@@ -23,7 +23,10 @@ $router->post('/register','AuthController@Register');
 $router->post('/login','AuthController@Login');
 
 # Routes for User 
+$router->post('/user/upload','UserController@UploadImage');
 $router->post('/user/{id}','UserController@Show');
+
+
 
 # Routes Practices
 // $router->post('post', 'ExampleController@PostExample');
