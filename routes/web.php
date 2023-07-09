@@ -49,7 +49,7 @@ $router->get('route', function(){
 });
 
 // Routes menggunakan Grouping
-$router->group(['prefix' => 'user'], function() use ($router){
+$router->group(['prefix' => 'user', 'middleware' => 'verify', 'namespace' => ''], function() use ($router){
     $router->get('profile', function(){
         return 'User profile';
     });
@@ -62,6 +62,12 @@ $router->group(['prefix' => 'user'], function() use ($router){
         return 'Key verify User : '. $key_verif;
     });
 });
+
+// Routes untuk user jika akunnya belum melakukan verifikasi  
+$router->get('/verify', function ()  {
+    return 'Yeet! anda belum melakukan verifikasi';
+});
+ 
 
 
 //-----------------------------------
