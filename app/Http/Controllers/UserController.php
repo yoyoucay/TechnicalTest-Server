@@ -36,7 +36,7 @@ class UserController extends Controller
             ], 404);
         }
     }
-
+    
     public function UploadImage(Request $request){
         # Validasi file yang terupload
         $this->validate($request, [

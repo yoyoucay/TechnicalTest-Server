@@ -50,6 +50,13 @@ class AuthController extends Controller
 
         $user = User::where('email', $email)->first();
 
+        if($user == null){
+            return response()->json([
+                'success' => false,
+                'message' => 'Gagal login',
+                'data' => ''
+            ], 404);
+        }
         if(Hash::check($password, $user->password)){
             $apiToken = base64_encode(str_random(40));
 

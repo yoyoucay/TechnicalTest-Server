@@ -26,6 +26,13 @@ $router->post('/login','AuthController@Login');
 $router->post('/user/upload','UserController@UploadImage');
 $router->post('/user/{id}','UserController@Show');
 
+# Routes for Room 
+$router->get('/room/list','RoomController@ShowAll');
+$router->post('/room/detail/{id}','RoomController@ShowDetail');
+$router->post('/room/create','RoomController@Create');
+$router->post('/room/update','RoomController@Update');
+$router->post('/room/remove/','RoomController@Remove');
+
 
 
 # Routes Practices
