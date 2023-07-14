@@ -47,7 +47,6 @@ class RoomController extends Controller
         if($room){
             $pathimg = '\public\images'.$room[0]->filename;
             $room[0]['urlToImage'] = URL::to($pathimg);
-            dd($room[0]);
             return response()->json([
                 'success' => true,
                 'message' => 'Data ditemukan!',
