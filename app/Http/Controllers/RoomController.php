@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use \Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redis;
+use Illuminate\Support\Facades\URL;
 use App\User;
 use App\Room;
 use App\Images;
@@ -39,9 +40,14 @@ class RoomController extends Controller
     }
 
     public function ShowAll(){
-        $room = Room::all();
+        $room = Room::join('images','rooms.image_id','=','images.id')
+            ->select('rooms.*', 'images.filename')
+            ->get();
 
         if($room){
+            $pathimg = '\public\images'.$room[0]->filename;
+            $room[0]['urlToImage'] = URL::to($pathimg);
+            dd($room[0]);
             return response()->json([
                 'success' => true,
                 'message' => 'Data ditemukan!',
@@ -53,8 +59,7 @@ class RoomController extends Controller
                 'message' => 'Data tidak ditemukan!',
                 'data' => ''
             ], 404);
-        }
-        
+        }        
     }
 
     public function ShowDetail($room_id){
