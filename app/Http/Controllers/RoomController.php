@@ -45,7 +45,7 @@ class RoomController extends Controller
             ->get();
 
         if($room){
-            $pathimg = '\public\images'.$room[0]->filename;
+            $pathimg = '/images/'.$room[0]->filename;
             $room[0]['urlToImage'] = URL::to($pathimg);
             return response()->json([
                 'success' => true,
