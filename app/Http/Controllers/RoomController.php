@@ -45,8 +45,13 @@ class RoomController extends Controller
             ->get();
 
         if($room){
-            $pathimg = '/images/'.$room[0]->filename;
-            $room[0]['urlToImage'] = URL::to($pathimg);
+            $i = 0;
+            foreach ($room as $nRoom) {
+                $pathimg = '/images/'.$room[$i]->filename;
+                $nRoom['urlToImage'] = URL::to($pathimg);
+                $i++;
+            }
+            
             return response()->json([
                 'success' => true,
                 'message' => 'Data ditemukan!',
@@ -163,7 +168,7 @@ class RoomController extends Controller
     public function UploadImage(Request $request){
         # Validasi file yang terupload
         $this->validate($request, [
-            'file' => 'required|mimes:jpg,jpeg,png,pdf|max:2048', 
+            'file' => 'required', 
         ]);
 
         if ($request->hasFile('file')) {
